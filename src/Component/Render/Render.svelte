@@ -11,7 +11,7 @@
 </script>
 
 <div>
-	<canvas id="process.env.CANVAS_NAME" {width} {height} />
+	<canvas id={process.env.CANVAS_NAME} {width} {height} />
 </div>
 
 <style>
