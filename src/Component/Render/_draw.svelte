@@ -7,4 +7,11 @@
 		ctx.fillStyle = color || rgba(0, 0, 0, 0);
 		ctx.fillRect(roundedX, roundedY, 1, 1);
 	};
+	export const drawRect = (ctx, x, y, color) => {
+		ctx.beginPath();
+		ctx.rect(x, y, 42, 42);
+		ctx.strokeStyle = color;
+		ctx.stroke();
+		ctx.closePath();
+	};
 </script>
