@@ -8,7 +8,8 @@
 	// TODO: refact to position
 	let x = 0;
 	let y = 0;
-	export const draw = () => {
+
+	const draw = () => {
 		const canvas = document.getElementById(process.env.CANVAS_NAME);
 		if (!canvas.getContext) {
 			alert("use other browser");
