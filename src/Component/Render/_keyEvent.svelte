@@ -6,13 +6,14 @@
 	export let jump = false;
 
 	export const keyDownHandler = (e) => {
-		if (e.key == 37 || e.key == "ArrowRight") {
+		console.log(e);
+		if (e.key == 37 || e.key == "ArrowRight" || e.code == "KeyD") {
 			right = true;
-		} else if (e.key == 39 || e.key == "ArrowLeft") {
+		} else if (e.key == 39 || e.key == "ArrowLeft" || e.code == "KeyA") {
 			left = true;
-		} else if (e.key == 38 || e.key == "ArrowUp") {
+		} else if (e.key == 38 || e.key == "ArrowUp" || e.code == "KeyW") {
 			up = true;
-		} else if (e.key == 40 || e.key == "ArrowDown") {
+		} else if (e.key == 40 || e.key == "ArrowDown" || e.code == "KeyS") {
 			down = true;
 		} else if (e.key == " " || e.code == "Space") {
 			jump = true;
@@ -20,13 +21,13 @@
 	};
 
 	export const keyUpHandler = (e) => {
-		if (e.key == 37 || e.key == "ArrowRight") {
+		if (e.key == 37 || e.key == "ArrowRight" || e.code == "KeyD") {
 			right = false;
-		} else if (e.key == 39 || e.key == "ArrowLeft") {
+		} else if (e.key == 39 || e.key == "ArrowLeft" || e.code == "KeyA") {
 			left = false;
-		} else if (e.key == 38 || e.key == "ArrowUp") {
+		} else if (e.key == 38 || e.key == "ArrowUp" || e.code == "KeyW") {
 			up = false;
-		} else if (e.key == 40 || e.key == "ArrowDown") {
+		} else if (e.key == 40 || e.key == "ArrowDown" || e.code == "KeyS") {
 			down = false;
 		} else if (e.key == " " || e.code == "Space") {
 			jump = false;
