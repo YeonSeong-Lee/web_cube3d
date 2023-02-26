@@ -1,37 +1,44 @@
 <script context="module">
 	import { drawRect } from "./_draw.svelte";
-	import { KeyHandler } from "./_keyEvent.svelte";
+	import {
+		keyDownHandler,
+		keyUpHandler,
+		right,
+		left,
+		up,
+		down,
+		jump,
+	} from "./_keyEvent.svelte";
 
 	export const rendering = () => {
-		setInterval(draw, 1000);
+		setInterval(draw, 10);
 	};
-
+	// TODO: refact to position
+	let x = 0;
+	let y = 0;
 	export const draw = () => {
-		const keyHandler = new KeyHandler();
 		const canvas = document.getElementById(process.env.CANVAS_NAME);
 		if (!canvas.getContext) {
 			alert("use other browser");
 			return;
 		}
 		const ctx = canvas.getContext("2d");
-		let x = 0;
-		let y = 0;
 		ctx.clearRect(0, 0, canvas.width, canvas.height);
-		const step = 42;
-		if (keyHandler.right === true) {
+		const step = 1;
+		if (right === true && x < canvas.width - 42) {
 			x += step;
 		}
-		if (keyHandler.left === true) {
+		if (left === true && x > 0) {
 			x -= step;
 		}
-		if (keyHandler.up === true) {
-			y += step;
-		}
-		if (keyHandler.down === true) {
+		if (up === true && y > 0) {
 			y -= step;
 		}
+		if (down === true && y < canvas.height - 42) {
+			y += step;
+		}
 		drawRect(ctx, x, y, "red");
-		document.addEventListener("keyup", keyHandler.keyUpHandler, false);
-		document.addEventListener("keydown", keyHandler.keyDownHandler, false);
+		document.addEventListener("keyup", keyUpHandler, false);
+		document.addEventListener("keydown", keyDownHandler, false);
 	};
 </script>

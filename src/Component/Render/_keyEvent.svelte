@@ -1,41 +1,35 @@
 <script context="module">
-	export class KeyHandler {
-		constructor() {
-			this.right = false;
-			this.left = false;
-			this.up = false;
-			this.down = false;
-			this.jump = false;
-			this.keyDownHandler = this.keyDownHandler.bind(this);
-			this.keyUpHandler = this.keyUpHandler.bind(this);
-		}
+	export let right = false;
+	export let left = false;
+	export let up = false;
+	export let down = false;
+	export let jump = false;
 
-		keyDownHandler(e) {
-			if (e.key == 37 || e.key == "ArrowRight") {
-				this.right = true;
-			} else if (e.key == 39 || e.key == "ArrowLeft") {
-				this.left = true;
-			} else if (e.key == 38 || e.key == "ArrowUp") {
-				this.up = true;
-			} else if (e.key == 40 || e.key == "ArrowDown") {
-				this.down = true;
-			} else if (e.key == " " || e.code == "Space") {
-				this.jump = true;
-			}
+	export const keyDownHandler = (e) => {
+		if (e.key == 37 || e.key == "ArrowRight") {
+			right = true;
+		} else if (e.key == 39 || e.key == "ArrowLeft") {
+			left = true;
+		} else if (e.key == 38 || e.key == "ArrowUp") {
+			up = true;
+		} else if (e.key == 40 || e.key == "ArrowDown") {
+			down = true;
+		} else if (e.key == " " || e.code == "Space") {
+			jump = true;
 		}
+	};
 
-		keyUpHandler(e) {
-			if (e.key == 37 || e.key == "ArrowRight") {
-				this.right = false;
-			} else if (e.key == 39 || e.key == "ArrowLeft") {
-				this.left = false;
-			} else if (e.key == 38 || e.key == "ArrowUp") {
-				this.up = false;
-			} else if (e.key == 40 || e.key == "ArrowDown") {
-				this.down = false;
-			} else if (e.key == " " || e.code == "Space") {
-				this.jump = false;
-			}
+	export const keyUpHandler = (e) => {
+		if (e.key == 37 || e.key == "ArrowRight") {
+			right = false;
+		} else if (e.key == 39 || e.key == "ArrowLeft") {
+			left = false;
+		} else if (e.key == 38 || e.key == "ArrowUp") {
+			up = false;
+		} else if (e.key == 40 || e.key == "ArrowDown") {
+			down = false;
+		} else if (e.key == " " || e.code == "Space") {
+			jump = false;
 		}
-	}
+	};
 </script>
