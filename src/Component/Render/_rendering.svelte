@@ -127,7 +127,7 @@
 		if (down === true && y < canvas.height - 42) {
 			y += step;
 		}
-		drawMiniMap(ctx, map);
+		drawMiniMap(canvas, map);
 		drawRect(ctx, x, y, "red");
 	};
 </script>
