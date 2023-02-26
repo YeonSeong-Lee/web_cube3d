@@ -115,7 +115,7 @@
 		const ctx = canvas.getContext("2d");
 		ctx.clearRect(0, 0, canvas.width, canvas.height);
 		const step = 1;
-		if (right === true && x < canvas.width - 42) {
+		if (right === true && x < canvas.width - canvas.width / map[0].length) {
 			x += step;
 		}
 		if (left === true && x > 0) {
@@ -124,7 +124,7 @@
 		if (up === true && y > 0) {
 			y -= step;
 		}
-		if (down === true && y < canvas.height - 42) {
+		if (down === true && y < canvas.height - canvas.height / map.length) {
 			y += step;
 		}
 		drawMiniMap(canvas, map);
