@@ -18,7 +18,7 @@
 		x,
 		y,
 		color = "red",
-		radius = 42
+		radius = 10
 	) => {
 		ctx.beginPath();
 		ctx.arc(x, y, radius, 0, 2 * Math.PI);

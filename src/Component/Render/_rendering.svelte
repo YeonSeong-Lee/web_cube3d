@@ -1,5 +1,5 @@
 <script context="module">
-	import { drawMiniMap, drawRect } from "./_draw.svelte";
+	import { drawMiniMap, drawPersonalPoint, drawRect } from "./_draw.svelte";
 	import { right, left, up, down, jump } from "./_keyEvent.svelte";
 	import { map } from "../../map.svelte";
 	import { intros } from "svelte/internal";
@@ -57,13 +57,13 @@
 			y += step;
 		}
 		drawMiniMap(canvas, map);
-		drawRect(
+		drawPersonalPoint(
 			ctx,
 			x,
 			y,
 			"red",
-			canvas.width / map[0].length,
-			canvas.height / map.length
+			Math.min(canvas.width / map[0].length, canvas.height / map.length) *
+				0.8
 		);
 	};
 </script>
