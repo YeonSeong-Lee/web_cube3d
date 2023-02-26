@@ -13,6 +13,19 @@
 		ctx.fillStyle = color;
 		ctx.fillRect(x, y, width, height);
 	};
+	export const drawPersonalPoint = (
+		ctx,
+		x,
+		y,
+		color = "red",
+		radius = 42
+	) => {
+		ctx.beginPath();
+		ctx.arc(x, y, radius, 0, 2 * Math.PI);
+		ctx.stroke();
+		ctx.fillStyle = color;
+		ctx.fill();
+	};
 	export const drawMiniMap = (canvas, map) => {
 		const ctx = canvas.getContext("2d");
 		ctx.fillStyle = "blue";
