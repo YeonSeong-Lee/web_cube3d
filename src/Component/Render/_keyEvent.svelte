@@ -33,4 +33,6 @@
 			jump = false;
 		}
 	};
+	document.addEventListener("keyup", keyUpHandler, false);
+	document.addEventListener("keydown", keyDownHandler, false);
 </script>

@@ -1,14 +1,6 @@
 <script context="module">
 	import { drawRect } from "./_draw.svelte";
-	import {
-		keyDownHandler,
-		keyUpHandler,
-		right,
-		left,
-		up,
-		down,
-		jump,
-	} from "./_keyEvent.svelte";
+	import { right, left, up, down, jump } from "./_keyEvent.svelte";
 
 	export const rendering = () => {
 		setInterval(draw, 10);
@@ -38,7 +30,5 @@
 			y += step;
 		}
 		drawRect(ctx, x, y, "red");
-		document.addEventListener("keyup", keyUpHandler, false);
-		document.addEventListener("keydown", keyDownHandler, false);
 	};
 </script>
