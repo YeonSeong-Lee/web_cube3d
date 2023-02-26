@@ -6,7 +6,6 @@
 	export let jump = false;
 
 	export const keyDownHandler = (e) => {
-		console.log(e);
 		if (e.key == 37 || e.key == "ArrowRight" || e.code == "KeyD") {
 			right = true;
 		} else if (e.key == 39 || e.key == "ArrowLeft" || e.code == "KeyA") {
