@@ -128,6 +128,13 @@
 			y += step;
 		}
 		drawMiniMap(canvas, map);
-		drawRect(ctx, x, y, "red");
+		drawRect(
+			ctx,
+			x,
+			y,
+			"red",
+			canvas.width / map[0].length,
+			canvas.height / map.length
+		);
 	};
 </script>

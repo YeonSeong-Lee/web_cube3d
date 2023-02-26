@@ -1,5 +1,5 @@
 <script context="module">
-	import { element } from "svelte/internal";
+	import { getWallColor } from "./_getWallColor.svelte";
 
 	// TODO: refactory for performance,
 	// @see https://dirask.com/posts/JavaScript-how-to-draw-pixel-on-canvas-element-n1e7Wp
@@ -20,16 +20,14 @@
 			const row = map[i];
 			for (let j = 0; j < row.length; j++) {
 				const element = row[j];
-				if (element === 1) {
-					drawRect(
-						ctx,
-						(j * canvas.width) / row.length,
-						(i * canvas.height) / map.length,
-						"blue",
-						canvas.width / row.length,
-						canvas.height / map.length
-					);
-				}
+				drawRect(
+					ctx,
+					(j * canvas.width) / row.length,
+					(i * canvas.height) / map.length,
+					getWallColor(element),
+					canvas.width / row.length,
+					canvas.height / map.length
+				);
 			}
 		}
 	};
