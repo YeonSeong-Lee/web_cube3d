@@ -22,7 +22,7 @@
 	export const isPossibleToUp = (canvas, x, y, step) => {
 		return (
 			y > 0 &&
-			map[Math.round(((y - step) / canvas.height) * map.length)][
+			map[Math.round(((y - step) / canvas.height) * map.length) - 1][
 				Math.round((x / canvas.width) * map[0].length)
 			] === 0
 		);
