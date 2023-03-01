@@ -2,7 +2,12 @@
 	import { drawMiniMap, drawPersonalPoint, drawRect } from "./_draw.svelte";
 	import { right, left, up, down, jump } from "./_keyEvent.svelte";
 	import { map } from "../../map.svelte";
-	import { intros } from "svelte/internal";
+	import {
+		isPossibleToRight,
+		isPossibleToLeft,
+		isPossibleToUp,
+		isPossibleToDown,
+	} from "./_wallCollision.svelte";
 
 	export const rendering = () => {
 		setInterval(draw, 10);
@@ -20,40 +25,16 @@
 		const ctx = canvas.getContext("2d");
 		ctx.clearRect(0, 0, canvas.width, canvas.height);
 		const step = 1;
-		if (
-			right === true &&
-			x < canvas.width - canvas.width / map[0].length &&
-			map[Math.round((y / canvas.height) * map.length)][
-				Math.round(((x + step) / canvas.width) * map[0].length)
-			] === 0
-		) {
+		if (right === true && isPossibleToRight(canvas, x, y, step)) {
 			x += step;
 		}
-		if (
-			left === true &&
-			x > 0 &&
-			map[Math.round((y / canvas.height) * map.length)][
-				Math.round(((x - step) / canvas.width) * map[0].length)
-			] === 0
-		) {
+		if (left === true && isPossibleToLeft(canvas, x, y, step)) {
 			x -= step;
 		}
-		if (
-			up === true &&
-			y > 0 &&
-			map[Math.round(((y - step) / canvas.height) * map.length)][
-				Math.round((x / canvas.width) * map[0].length)
-			] === 0
-		) {
+		if (up === true && isPossibleToUp(canvas, x, y, step)) {
 			y -= step;
 		}
-		if (
-			down === true &&
-			y < canvas.height - canvas.height / map.length &&
-			map[Math.round(((y + step) / canvas.height) * map.length)][
-				Math.round((x / canvas.width) * map[0].length)
-			] === 0
-		) {
+		if (down === true && isPossibleToDown(canvas, x, y, step)) {
 			y += step;
 		}
 		drawMiniMap(canvas, map);
