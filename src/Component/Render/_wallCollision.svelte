@@ -14,7 +14,7 @@
 		return (
 			x > 0 &&
 			map[Math.round((y / canvas.height) * map.length)][
-				Math.round(((x - step) / canvas.width) * map[0].length)
+				Math.round(((x - step) / canvas.width) * map[0].length) - 1
 			] === 0
 		);
 	};
