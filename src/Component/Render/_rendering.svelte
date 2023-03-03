@@ -1,5 +1,10 @@
 <script context="module">
-	import { drawMiniMap, drawPersonalPoint, drawRect } from "./_draw.svelte";
+	import {
+		drawMiniMap,
+		drawPersonalPoint,
+		drawRay,
+		drawRect,
+	} from "./_draw.svelte";
 	import { right, left, up, down, jump } from "./_keyEvent.svelte";
 	import { map } from "../../map.svelte";
 	import {
@@ -15,6 +20,7 @@
 	// TODO: refact to position
 	let x = 42;
 	let y = 42;
+	const dir = [1, 0];
 
 	const draw = () => {
 		const canvas = document.getElementById(process.env.CANVAS_NAME);
@@ -37,14 +43,15 @@
 		if (down === true && isPossibleToDown(canvas, x, y, step)) {
 			y += step;
 		}
-		drawMiniMap(canvas, map);
+		drawMiniMap(canvas, map, x, y);
 		drawPersonalPoint(
 			ctx,
 			x,
 			y,
 			"red",
 			Math.min(canvas.width / map[0].length, canvas.height / map.length) *
-				0.8
+				0.42
 		);
+		drawRay(canvas, map, x, y, dir);
 	};
 </script>

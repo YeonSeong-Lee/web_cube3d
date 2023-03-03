@@ -25,6 +25,7 @@
 		ctx.stroke();
 		ctx.fillStyle = color;
 		ctx.fill();
+		ctx.closePath();
 	};
 	export const drawMiniMap = (canvas, map) => {
 		const ctx = canvas.getContext("2d");
@@ -43,5 +44,14 @@
 				);
 			}
 		}
+	};
+	export const drawRay = (canvas, map, x, y, dir) => {
+		const ctx = canvas.getContext("2d");
+		const playerSightRange = 42;
+		ctx.beginPath();
+		ctx.moveTo(x, y);
+		ctx.lineTo(x + dir[0] * playerSightRange, dir[1] * playerSightRange);
+		ctx.stroke();
+		ctx.closePath();
 	};
 </script>
