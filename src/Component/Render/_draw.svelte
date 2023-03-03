@@ -47,10 +47,11 @@
 	};
 	export const drawRay = (canvas, map, x, y, dir) => {
 		const ctx = canvas.getContext("2d");
-		const playerSightRange = 10;
+		const playerSightRange = 42;
+		const startAngle = Math.atan2(dir[1], dir[0]) - Math.PI / 4;
 		ctx.beginPath();
-		ctx.moveTo(x, y);
-		ctx.lineTo(x + dir[0] * playerSightRange, dir[1] * playerSightRange);
+		ctx.strokeStyle = "red";
+		ctx.arc(x, y, playerSightRange, startAngle, startAngle + Math.PI / 2);
 		ctx.stroke();
 		ctx.closePath();
 	};
