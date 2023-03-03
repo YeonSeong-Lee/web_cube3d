@@ -5,7 +5,15 @@
 		drawRay,
 		drawRect,
 	} from "./_draw.svelte";
-	import { right, left, up, down, jump } from "./_keyEvent.svelte";
+	import {
+		right,
+		left,
+		up,
+		down,
+		jump,
+		rotate_left,
+		rotate_right,
+	} from "./_keyEvent.svelte";
 	import { map } from "../../map.svelte";
 	import {
 		isPossibleToRight,
@@ -42,6 +50,22 @@
 		}
 		if (down === true && isPossibleToDown(canvas, x, y, step)) {
 			y += step;
+		}
+		if (rotate_left === true) {
+			const radian = Math.PI / 90;
+			const tempX =
+				Math.cos(-radian) * dir[0] - Math.sin(-radian) * dir[1];
+			const tempY =
+				Math.sin(-radian) * dir[0] + Math.cos(-radian) * dir[1];
+			dir[0] = tempX;
+			dir[1] = tempY;
+		}
+		if (rotate_right === true) {
+			const radian = Math.PI / 90;
+			const tempX = Math.cos(radian) * dir[0] - Math.sin(radian) * dir[1];
+			const tempY = Math.sin(radian) * dir[0] + Math.cos(radian) * dir[1];
+			dir[0] = tempX;
+			dir[1] = tempY;
 		}
 		drawMiniMap(canvas, map, x, y);
 		drawPersonalPoint(

@@ -47,7 +47,7 @@
 	};
 	export const drawRay = (canvas, map, x, y, dir) => {
 		const ctx = canvas.getContext("2d");
-		const playerSightRange = 42;
+		const playerSightRange = 10;
 		ctx.beginPath();
 		ctx.moveTo(x, y);
 		ctx.lineTo(x + dir[0] * playerSightRange, dir[1] * playerSightRange);
